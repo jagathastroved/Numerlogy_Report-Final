@@ -1,0 +1,8 @@
+{
+  "name": "Numerology Report",
+  "description": "Calculate your personalized free numerology report including Life Path, Destiny, and Lucky Traits with detailed career, traits, and relationship insights.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
