@@ -184,7 +184,7 @@ export default function PremiumDeliverables() {
       </motion.div>
       {/* Interactive checkout section */}
       <motion.div variants={itemVariants}>
-        <form onSubmit={handleCheckout} className="space-y-6 pt-4">
+        <div className="space-y-6 pt-4">
           {/* Pricing Box layout */}
           <div className="bg-gradient-to-br from-emerald-500 to-teal-600 border border-emerald-400 rounded-xl p-4 sm:p-5 shadow-[0_4px_20px_-10px_rgba(16,185,129,0.4)] flex flex-col sm:flex-row justify-between items-center gap-4 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
@@ -210,9 +210,13 @@ export default function PremiumDeliverables() {
             </div>
           </div>
           {/* CTA action button */}
-          <button
-            type="submit"
-            disabled={loading}
+          <a
+            href="https://www.astroved.com/prediction-services-personalized-numerology-report-P88425.aspx/?promo=SL_Numerology_Report"
+            target="_blank"
+            onClick={() => {
+              setLoading(true);
+              setTimeout(() => setLoading(false), 1000);
+            }}
             className="w-full py-3 sm:py-4 bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-400 hover:to-rose-400 text-white font-black text-sm sm:text-lg tracking-wide rounded-xl shadow-[0_8px_20px_-10px_rgba(244,63,94,0.6)] active:scale-[0.98] transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 sm:gap-3 relative overflow-hidden group border border-orange-400/50"
           >
             <div className="absolute inset-0 opacity-20 mix-blend-overlay"></div>
@@ -229,7 +233,7 @@ export default function PremiumDeliverables() {
                 </span>
               </>
             )}
-          </button>
+          </a>
 
           {/* View Sample Report Button */}
           <a
@@ -245,7 +249,7 @@ export default function PremiumDeliverables() {
           <p className="text-center text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1 sm:gap-1.5 mt-2 sm:mt-3">
             <Lock className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> 100% Secure Checkout
           </p>
-        </form>
+        </div>
       </motion.div>
     </motion.div>
   );

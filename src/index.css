@@ -248,3 +248,32 @@ h6 {
 .animate-float-straight {
   animation: float-straight 6s ease-in-out infinite;
 }
+
+/* Fix for html2canvas rendering text gradients as solid blocks */
+.pdf-export-container .bg-clip-text {
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  background-image: none !important;
+  color: #0f172a !important;
+}
+
+.pdf-export-container .text-transparent {
+  color: #0f172a !important;
+  -webkit-text-fill-color: initial !important;
+}
+
+/* Force pills (titles) to have solid background and black text for html2canvas */
+.pdf-export-container .inline-flex.rounded-full {
+  background: #f1f5f9 !important;
+  background-image: none !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: none !important;
+}
+
+.pdf-export-container .inline-flex.rounded-full span,
+.pdf-export-container .inline-flex.rounded-full svg {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}

@@ -8,6 +8,18 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useNavigate, Navigate, useLocation, Outlet } from 'react-router-dom';
 import CelestialBackground from '../animations/CelestialBackground';
 import MaintenanceError from '../ui/MaintenanceError';
+import DownloadPdfButton from '../ui/DownloadPdfButton';
+
+// Import slides for PDF Generation
+import Welcome from '../../slides/Welcome';
+import CoreNumbers from '../../slides/CoreNumbers';
+import LifePathMath from '../../slides/LifePathMath';
+import LifePathDetail from '../../slides/LifePathDetail';
+import NameDestinyMath from '../../slides/NameDestinyMath';
+import NumerologyOverview from '../../slides/NumerologyOverview';
+import LuckyTraits from '../../slides/LuckyTraits';
+import MonthForecast from '../../slides/MonthForecast';
+import PremiumDeliverables from '../../slides/PremiumDeliverables';
 
 const REPORT_PAGES = [
   { path: '/welcome', title: 'Welcome' },
@@ -202,7 +214,13 @@ export default function NumerologyReportLayout() {
         </div>
 
         {/* Exit booklet back to start form */}
-        <div className="p-5 border-t border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800 flex justify-center">
+        <div className="p-5 border-t border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800 flex flex-col justify-center space-y-3">
+          <DownloadPdfButton
+            targetIds={[
+              'pdf-page-0', 'pdf-page-1', 'pdf-page-2', 'pdf-page-3',
+              'pdf-page-4', 'pdf-page-5', 'pdf-page-6', 'pdf-page-7', 'pdf-page-8'
+            ]}
+          />
           <button
             onClick={handleResetReport}
             className="group relative flex items-center justify-center space-x-2 w-full px-2 sm:px-4 py-3.5 bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white rounded-2xl shadow-[0_8px_20px_-6px_rgba(244,63,94,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(244,63,94,0.7)] transition-all duration-300 focus:outline-none overflow-hidden active:scale-[0.98] border border-white/10"
@@ -259,7 +277,7 @@ export default function NumerologyReportLayout() {
           className="flex-1 overflow-y-auto px-4 lg:px-12 py-8 flex items-start justify-center custom-scrollbar w-full"
         >
           {/* Virtual Booklet Frame centering - SOLID WHITE THEME */}
-          <div className="w-full max-w-2xl bg-[#FFFFFF] dark:bg-slate-800 shadow-[0_20px_60px_rgba(0,0,0,0.6)] rounded-3xl lg:rounded-[2rem] flex flex-col p-6 lg:p-10 relative select-text text-slate-900 dark:text-slate-100 overflow-hidden border border-slate-100 dark:border-slate-700 mx-auto">
+          <div id="report-content-to-download" className="w-full max-w-2xl bg-[#FFFFFF] dark:bg-slate-800 shadow-[0_20px_60px_rgba(0,0,0,0.6)] rounded-3xl lg:rounded-[2rem] flex flex-col p-6 lg:p-10 relative select-text text-slate-900 dark:text-slate-100 overflow-hidden border border-slate-100 dark:border-slate-700 mx-auto">
 
             {/* Dynamic Header Progress Bar */}
             <div className="absolute top-0 left-0 right-0 h-1.5 bg-slate-100">
@@ -350,6 +368,45 @@ export default function NumerologyReportLayout() {
           </div>
         </section>
       </main>
+
+      {/* Hidden Container for PDF Generation - Contains all 9 pages */}
+      <div className="pdf-export-container absolute left-[-9999px] top-0 w-[800px] bg-white h-[1px] overflow-visible">
+        {[
+          { Component: Welcome, title: 'Welcome' },
+          { Component: LifePathMath, title: 'Life Path Math' },
+          { Component: LifePathDetail, title: 'Life Path Detail' },
+          { Component: CoreNumbers, title: 'Core Numbers' },
+          { Component: NameDestinyMath, title: 'Name Destiny Math' },
+          { Component: NumerologyOverview, title: 'Numerology Overview' },
+          { Component: LuckyTraits, title: 'Lucky Traits' },
+          { Component: MonthForecast, title: 'Month Forecast' },
+          { Component: PremiumDeliverables, title: 'Premium Deliverables' },
+        ].map((Page, index) => (
+          <div key={index} id={`pdf-page-${index}`} className="w-full bg-[#FFFFFF] p-10 select-text text-slate-900 border border-slate-100 mb-8" style={{ minHeight: '1122px' }}>
+            {/* Header inside the booklet page */}
+            <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-100 relative">
+              <div className="flex-1 flex justify-start">
+                <img src="https://cdn.astroved.com/images/images-av/AstroVed-Logo.svg" alt="Astroved-logo" className="h-8 w-auto object-contain" />
+              </div>
+              <div className="flex-[2] sm:flex-none flex flex-col items-center justify-center text-center px-2">
+                <div className="flex items-center mb-1 text-orange-500 opacity-80">
+                  <div className="w-6 h-px bg-gradient-to-r from-transparent to-orange-500 mr-2"></div>
+                  <Compass size={14} className="animate-spin-slow" />
+                  <div className="w-6 h-px bg-gradient-to-l from-transparent to-orange-500 ml-2"></div>
+                </div>
+                <span className="text-xs font-black text-slate-800 tracking-[0.2em] uppercase text-center break-words">
+                  {Page.title}
+                </span>
+              </div>
+              <div className="flex-1"></div>
+            </div>
+
+            <div className="space-y-6 text-slate-800 leading-relaxed text-base font-normal">
+              <Page.Component />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

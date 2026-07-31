@@ -152,24 +152,22 @@ export default function LifePathDetail() {
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={() => window.location.href = 'https://www.astroved.com/prediction-services-personalized-numerology-report-P88425.aspx/?promo=SL_Numerology_Report'}
-            className="order-5 hidden lg:block mt-2 px-6 py-3 bg-gradient-to-r from-[#e3b659] to-[#c2964b] hover:from-[#f0c366] hover:to-[#d1a55a] text-[#2a1148] text-sm font-bold rounded-xl shadow-[0_4px_15px_rgba(227,182,89,0.3)] transition-all hover:scale-105 active:scale-95"
+          <a
+            href='https://www.astroved.com/prediction-services-personalized-numerology-report-P88425.aspx/?promo=SL_Numerology_Report'
+            className="order-5 hidden lg:flex mt-2 px-6 py-3 bg-gradient-to-r from-[#e3b659] to-[#c2964b] hover:from-[#f0c366] hover:to-[#d1a55a] text-[#2a1148] text-sm font-bold rounded-xl shadow-[0_4px_15px_rgba(227,182,89,0.3)] transition-all hover:scale-105 active:scale-95 items-center justify-center"
           >
             Book Your Numerology Report
-          </button>
+          </a>
         </div>
 
         {/* Mobile Button - Order 3 (Bottom on Mobile) */}
         <div className="relative z-10 lg:hidden w-full order-3 mt-2">
-          <button
-            type="button"
-            onClick={() => window.location.href = 'https://www.astroved.com/prediction-services-personalized-numerology-report-P88425.aspx/?promo=SL_Numerology_Report'}
-            className="w-full px-6 py-3.5 bg-gradient-to-r from-[#e3b659] to-[#c2964b] text-[#2a1148] text-sm font-bold rounded-xl shadow-[0_4px_15px_rgba(227,182,89,0.3)] active:scale-95 transition-transform"
+          <a
+            href='https://www.astroved.com/prediction-services-personalized-numerology-report-P88425.aspx/?promo=SL_Numerology_Report'
+            className="w-full px-6 py-3.5 bg-gradient-to-r from-[#e3b659] to-[#c2964b] text-[#2a1148] text-sm font-bold rounded-xl shadow-[0_4px_15px_rgba(227,182,89,0.3)] active:scale-95 transition-transform flex items-center justify-center"
           >
             Book Your Numerology Report
-          </button>
+          </a>
         </div>
 
       </motion.div>
