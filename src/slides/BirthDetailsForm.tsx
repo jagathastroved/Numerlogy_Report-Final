@@ -39,7 +39,7 @@ export default function BirthDetailsForm({
   const [activeTab, setActiveTab] = useState<'Numerology'>('Numerology');
   const [showSuggestions, setShowSuggestions] = useState(false);
 
-  const [apiCities, setApiCities] = useState<{ name: string, displayName: string, lat?: string | number, lon?: string | number }[]>([]);
+  const [apiCities, setApiCities] = useState<{ name: string, displayName: string, stateName?: string, lat?: number, lng?: number }[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [isValidCity, setIsValidCity] = useState(false);
 
@@ -57,10 +57,10 @@ export default function BirthDetailsForm({
   }, []);
 
   useEffect(() => {
-    const citySearchTerm = (data.birthCity || '').trim();
+    const city = (data.birthCity || '').trim();
     const countryCode = (data.birthCountry || '').trim();
 
-    if (!countryCode || !citySearchTerm || citySearchTerm.length < 3) {
+    if (!countryCode || !city || city.length < 3) {
       setApiCities([]);
       return;
     }
@@ -68,27 +68,25 @@ export default function BirthDetailsForm({
     const timer = setTimeout(async () => {
       setIsSearching(true);
       try {
-        const countryName = Country.getCountryByCode(countryCode)?.name || countryCode;
-        const results = await searchLocation(citySearchTerm, countryName);
+        const country = Country.getCountryByCode(countryCode)?.name || countryCode;
+        const results = await searchLocation(city, country);
 
         if (!results || results.length === 0) {
           setApiCities([]);
           return;
         }
 
-        // Map the results to a unique list of city names
         const formattedCities = results.map((item: any) => ({
           name: item.City || item.name || item.display_name?.split(',')[0],
           displayName: item.City
             ? `${item.City}, ${item.StateorProvince ? item.StateorProvince + ', ' : ''}${item.Country}`
             : item.display_name,
-          lat: item.Latitude,
-          lon: item.Longitude
+          stateName: item.StateorProvince || 'Unknown',
+          lat: item.Latitude ? parseFloat(item.Latitude) : 0,
+          lng: item.Longitude ? parseFloat(item.Longitude) : 0
         }));
 
-        // Remove duplicates by name
-        const uniqueCities = Array.from(new Map(formattedCities.map((item: any) => [item.name, item])).values()) as { name: string, displayName: string, lat: string | number, lon: string | number }[];
-
+        const uniqueCities = Array.from(new Map(formattedCities.map((item: any) => [item.displayName, item])).values()) as { name: string, displayName: string, stateName: string, lat: number, lng: number }[];
         setApiCities(uniqueCities);
       } catch (error) {
         console.error("Error fetching cities:", error);
@@ -513,10 +511,10 @@ export default function BirthDetailsForm({
                           ) : apiCities.length > 0 ? (
                             apiCities.map((city, idx) => (
                               <li
-                                key={`${city.name}-${idx}`}
+                                key={`${city.displayName}-${idx}`}
                                 onMouseDown={(e) => e.preventDefault()}
                                 onClick={() => {
-                                  onChange({ birthCity: city.name, latitude: city.lat, longitude: city.lon });
+                                  onChange({ birthCity: city.name, latitude: String(city.lat), longitude: String(city.lng) });
                                   setIsValidCity(true);
                                   setShowSuggestions(false);
                                 }}
