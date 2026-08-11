@@ -9,18 +9,26 @@
   <meta name="keywords"
     content="Numerology report generation, Numerology analysis online, Best Numerology generator, Free Numerology report, Numerology name prediction, Numerology life path, Detailed Numerology reading, Numerology predictions accuracy, Instant Numerology report, Complete Numerology analysis" />
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://astropedia-ai.astroved.com/numerology-report/" />
+  <link rel="canonical" href="https://www.astroved.com/numerology-report/" />
 
   <!-- Meta Robots -->
-  <meta name="robots" content="index, follow" />
+  <meta id="meta-robots" name="robots" content="index, follow" />
+  <script>
+    if (window.location.search && window.location.search.length > 1) {
+      document.getElementById("meta-robots").setAttribute("content", "noindex, follow");
+    }
+  </script>
 
   <!-- Open Graph (OG) Tags -->
   <meta property="og:title" content="Numerology Prediction & Detailed Report" />
   <meta property="og:description"
     content="Get your detailed numerology report, life path analysis, and name prediction online. Instant, accurate, and complete numerology reading." />
-  <meta property="og:image" content="https://astropedia-ai.astroved.com/numerology-report/og-image.jpg" />
-  <meta property="og:url" content="https://astropedia-ai.astroved.com/numerology-report/" />
+  <meta property="og:image" content="https://www.astroved.com/numerology-report/assets/og-image.jpg" />
+  <meta property="og:url" content="https://www.astroved.com/numerology-report/" />
   <meta property="og:type" content="website" />
 
   <!-- Twitter Card Tags -->
@@ -28,16 +36,7 @@
   <meta name="twitter:title" content="Numerology Prediction & Detailed Report" />
   <meta name="twitter:description"
     content="Get your detailed numerology report, life path analysis, and name prediction online. Instant, accurate, and complete numerology reading." />
-  <meta name="twitter:image" content="https://astropedia-ai.astroved.com/numerology-report/twitter-image.jpg" />
-
-  <!-- Google Analytics / GTM tracking (Placeholder) -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA-ID"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'YOUR-GA-ID');
-  </script> -->
+  <meta name="twitter:image" content="https://www.astroved.com/numerology-report/twitter-image.jpg"/>
 
   <title>Numerology Prediction & Detailed Report</title>
 
@@ -47,15 +46,60 @@
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Numerology Prediction",
-      "url": "https://astropedia-ai.astroved.com/numerology-report/",
+      "url": "https://www.astroved.com/numerology-report/",
       "description": "Instant, accurate, and complete numerology reading."
     }
+  </script>
+
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l !== 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-TRS65PJ');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- GA4 DataLayer Push -->
+  <script>
+    function getCookie(name) {
+      var match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+      return match ? match[2] : null;
+    }
+
+    var cId = getCookie("C_Id");
+    var pageLanguage = "en-US";
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "page_view",
+      page_name: document.title || "",
+      page_url: window.location.href,
+      user_id: cId || 0,
+      language: pageLanguage
+    });
   </script>
 </head>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRS65PJ" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </body>
 
 </html>

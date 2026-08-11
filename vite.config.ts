@@ -34,25 +34,25 @@ export default defineConfig(() => {
       // LocalHost Proxy 
       // ===============
 
-      // proxy: {
-      //   '/numerology-report/api': {
-      //     target: 'https://ai-numerology.astroved.com',
-      //     changeOrigin: true,
-      //     rewrite: (path) => path.replace(/^\/numerology-report\/api/, ''),
-      //   },
-      // }
+      proxy: {
+        '/numerology-report/api': {
+          target: 'https://ai-numerology.astroved.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/numerology-report\/api/, ''),
+        },
+      }
 
       // ===============
       // Production Code
       // ===============
 
-      proxy: {
-        '/api/proxy': {
-          target: 'https://ai-numerology.astroved.com',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api\/proxy/, ''),
-        },
-      }
+      // proxy: {
+      //   '/api/proxy': {
+      //     target: 'https://ai-numerology.astroved.com',
+      //     changeOrigin: true,
+      //     rewrite: (path) => path.replace(/^\/api\/proxy/, ''),
+      //   },
+      // }
 
     },
   };

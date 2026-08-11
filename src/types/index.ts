@@ -19,6 +19,7 @@ export interface PersonalDetails {
   birthCity: string;
   latitude?: number | string;
   longitude?: number | string;
+  promoCode?: string | null;
 }
 
 export interface LocationPreferences {

@@ -22,7 +22,8 @@ export const fetchNumerologyReport = async (details: PersonalDetails) => {
       birthCountry: countryName.trim().toLowerCase(),
       birthCity: details.birthCity.trim().toLowerCase(),
       latitude: details.latitude,
-      longitude: details.longitude
+      longitude: details.longitude,
+      promo: details.promoCode
     };
 
     // console.log('Sending API Payload:', payload);

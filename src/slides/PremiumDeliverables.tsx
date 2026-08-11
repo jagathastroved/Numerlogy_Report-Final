@@ -9,9 +9,9 @@ export default function PremiumDeliverables() {
   const [loading, setLoading] = useState(false);
   const [priceDetails, setPriceDetails] = useState({
     symbol: "₹",
-    price: "499.00",
+    price: "399.00",
     strikeout: "999.00",
-    savings: "500.00",
+    savings: "600.00",
   });
   useEffect(() => {
     const fetchPricing = async () => {
@@ -23,23 +23,23 @@ export default function PremiumDeliverables() {
       if (currency === "MYR") {
         setPriceDetails({
           symbol: "MYR",
-          price: "50.00",
+          price: "40.00",
           strikeout: "100.00",
-          savings: "50.00",
+          savings: "60.00",
         });
       } else if (currency === "USD" || currency === "US") {
         setPriceDetails({
           symbol: "$",
-          price: "15.00",
-          strikeout: "30.00",
-          savings: "15.00",
+          price: "10.00",
+          strikeout: "25.00",
+          savings: "10.00",
         });
       } else {
         setPriceDetails({
           symbol: "₹",
-          price: "499.00",
+          price: "399.00",
           strikeout: "999.00",
-          savings: "500.00",
+          savings: "600.00",
         });
       }
     };
@@ -88,7 +88,7 @@ export default function PremiumDeliverables() {
     setLoading(true);
     window.open(
       "https://www.astroved.com/prediction-services-personalized-numerology-report-P88425.aspx/?promo=SL_Numerology_Report",
-      "_blank"
+      "_blank",
     );
     setTimeout(() => setLoading(false), 1000);
   };
@@ -205,7 +205,7 @@ export default function PremiumDeliverables() {
             {/* Discount Badge */}
             <div className="bg-white text-emerald-700 font-black uppercase px-4 py-2 rounded-lg shadow-md relative z-10 flex flex-col items-center border border-white/50 text-center shrink-0 w-full sm:w-auto">
               <span className="text-[10px] tracking-wide whitespace-nowrap">
-                You Save: {currentSymbol} {savings} (50%)
+                You Save: {currentSymbol} {savings} (60%)
               </span>
             </div>
           </div>
