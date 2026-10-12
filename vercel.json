@@ -2,12 +2,12 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "/numerology-report",
+      "destination": "/numerology-report/",
       "permanent": false
     },
     {
-      "source": "/numerology-report/",
-      "destination": "/numerology-report",
+      "source": "/numerology-report",
+      "destination": "/numerology-report/",
       "permanent": false
     }
   ],
@@ -25,7 +25,7 @@
       "destination": "/assets/:match*"
     },
     {
-      "source": "/numerology-report",
+      "source": "/numerology-report/",
       "destination": "/index.html"
     },
     {
