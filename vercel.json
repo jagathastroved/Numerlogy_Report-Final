@@ -20,11 +20,11 @@
       "destination": "/assets/:match*"
     },
     {
-      "source": "/numerology-report/:match*",
+      "source": "/numerology-report",
       "destination": "/index.html"
     },
     {
-      "source": "/numerology-report",
+      "source": "/numerology-report/(.*)",
       "destination": "/index.html"
     }
   ]
