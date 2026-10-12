@@ -4,6 +4,11 @@
       "source": "/",
       "destination": "/numerology-report",
       "permanent": false
+    },
+    {
+      "source": "/numerology-report/",
+      "destination": "/numerology-report",
+      "permanent": false
     }
   ],
   "rewrites": [
