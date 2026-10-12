@@ -1,8 +1,31 @@
 {
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/numerology-report",
+      "permanent": false
+    }
+  ],
   "rewrites": [
+    {
+      "source": "/numerology-report/api/:match*",
+      "destination": "https://ai-numerology.astroved.com/:match*"
+    },
     {
       "source": "/api/proxy/:match*",
       "destination": "https://ai-numerology.astroved.com/:match*"
+    },
+    {
+      "source": "/numerology-report/assets/:match*",
+      "destination": "/assets/:match*"
+    },
+    {
+      "source": "/numerology-report/:match*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/numerology-report",
+      "destination": "/index.html"
     }
   ]
 }

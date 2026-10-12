@@ -6,7 +6,7 @@ import { ReportProvider } from "../context/ReportContext";
 export const AppProviders: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <ThemeProvider>
-      <BrowserRouter basename="/numerology-report/">
+      <BrowserRouter basename="/numerology-report">
         <ReportProvider>
           {children}
         </ReportProvider>
