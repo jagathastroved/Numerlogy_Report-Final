@@ -10,6 +10,21 @@ export default defineConfig(() => {
       legacy({
         targets: ['defaults', 'iOS >= 13', 'Safari >= 13'],
       }),
+      {
+        name: 'redirect-numerology-report-trailing-slash',
+        configureServer(server) {
+          server.middlewares.use((request, response, next) => {
+            if (request.url === '/numerology-report' || request.url?.startsWith('/numerology-report?')) {
+              response.statusCode = 308;
+              response.setHeader('Location', `/numerology-report/${request.url.slice('/numerology-report'.length)}`);
+              response.end();
+              return;
+            }
+
+            next();
+          });
+        },
+      },
     ],
     base: "/numerology-report/",
     resolve: {
@@ -34,25 +49,25 @@ export default defineConfig(() => {
       // LocalHost Proxy 
       // ===============
 
-      proxy: {
-        '/numerology-report/api': {
-          target: 'https://ai-numerology.astroved.com',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/numerology-report\/api/, ''),
-        },
-      }
+      // proxy: {
+      //   '/numerology-report/api': {
+      //     target: 'https://ai-numerology.astroved.com',
+      //     changeOrigin: true,
+      //     rewrite: (path) => path.replace(/^\/numerology-report\/api/, ''),
+      //   },
+      // }
 
       // ===============
       // Production Code
       // ===============
 
-      // proxy: {
-      //   '/api/proxy': {
-      //     target: 'https://ai-numerology.astroved.com',
-      //     changeOrigin: true,
-      //     rewrite: (path) => path.replace(/^\/api\/proxy/, ''),
-      //   },
-      // }
+      proxy: {
+        '/api/proxy': {
+          target: 'https://ai-numerology.astroved.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api\/proxy/, ''),
+        },
+      }
 
     },
   };
